@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { projects } from "@/content/projects";
 import ProjectCard from "@/components/ProjectCard";
+import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
   return (
@@ -24,28 +25,30 @@ export default function Home() {
               </span>
             </h1>
           </div>
+        <nav className="flex flex-wrap items-center justify-center gap-6 pt-4">
+          <Link
+            href="https://github.com/JCooper-BIt"
+            aria-label="GitHub"
+            className="text-muted hover:text-primary transition 
+                      hover:drop-shadow-[0_0_10px_rgba(137,180,250,0.7)]
+                      hover:-translate-y-0.5"
+          >
+            <Github size={20} />
+          </Link>
 
-          <nav className="flex flex-wrap items-center justify-center gap-6 text-sm pt-4 transition-transform duration-300 ease-out hover:-translate-y-0.5">
-            <Link
-              href="/blog"
-              className="text-primary hover:text-accent transition-colors"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/about"
-              className="text-primary hover:text-accent transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="text-primary hover:text-accent transition-colors"
-            >
-              Contact
-            </Link>
-          </nav>
+          <Link
+            href="mailto:hello@jayc.me\"
+            aria-label="Email"
+            className="text-muted hover:text-primary transition 
+                      hover:drop-shadow-[0_0_10px_rgba(137,180,250,0.7)]
+                      hover:-translate-y-0.5"
+          >
+            <Mail size={20} />
+          </Link>
+        </nav>
         </section>
+
+
 
         <section
           id="projects"

@@ -13,6 +13,6 @@ export const projects: Project[] = [
     description:
       "Lars (Linear Algebra in Rust) is a learning-focused Rust crate that provides simple yet powerful linear algebra utilities built from first principles by a student currently going through Linear Algebra classes.",
     tech: ["Rust"],
-    href: "/projects/neon-dashboard",
+    href: "https://github.com/JCooper-Bit/lars",
   },
 ];
