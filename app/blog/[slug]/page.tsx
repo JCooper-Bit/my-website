@@ -1,15 +1,18 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { posts } from "@/content/posts";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type BlogPostPageProps = {
+  // Next App Router passes params as a Promise
   params: Promise<{ slug: string }>;
 };
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
 
-  // Sort posts newest → oldest
+  // Sort newest → oldest
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
@@ -22,14 +25,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const previousPost = sortedPosts[postIndex + 1]; // older
-  const nextPost = sortedPosts[postIndex - 1];     // newer
-
-  const paragraphs = post.body.split(/\n\s*\n/);
+  const nextPost = sortedPosts[postIndex - 1]; // newer
 
   return (
     <main className="min-h-screen bg-base px-6 py-20">
       <div className="mx-auto w-full max-w-3xl space-y-10">
-
         {/* HEADER */}
         <header className="space-y-3 text-text">
           <p className="text-xs text-muted">
@@ -69,45 +69,71 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
 
-        {/* MAIN POST CONTENT */}
-        <article className="space-y-4 text-sm sm:text-text leading-relaxed text-text">
-          {paragraphs.map((para, i) => {
-            if (para.startsWith("## ")) {
-              const headingText = para.replace(/^##\s*/, "");
-              return (
+        {/* MAIN POST CONTENT – rendered with react-markdown */}
+        <article className="prose prose-invert max-w-none text-text prose-p:mb-4 prose-headings:mt-6 prose-headings:mb-2 prose-li:marker:text-primary">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h1: ({ node, ...props }) => (
+                <h1
+                  className="text-2xl sm:text-3xl font-semibold text-text"
+                  {...props}
+                />
+              ),
+              h2: ({ node, ...props }) => (
                 <h2
-                  key={i}
                   className="pt-6 text-text sm:text-lg font-semibold text-text"
-                >
-                  {headingText}
-                </h2>
-              );
-            }
-
-            if (para.startsWith("- ")) {
-              const items = para
-                .split("\n")
-                .filter((line) => line.trim().length > 0);
-              return (
+                  {...props}
+                />
+              ),
+              h3: ({ node, ...props }) => (
+                <h3
+                  className="pt-4 text-sm sm:text-text font-semibold text-text"
+                  {...props}
+                />
+              ),
+              p: ({ node, ...props }) => (
+                <p
+                  className="text-sm sm:text-text leading-relaxed text-text"
+                  {...props}
+                />
+              ),
+              ul: ({ node, ...props }) => (
                 <ul
-                  key={i}
-                  className="list-disc list-inside space-y-1 text-text"
-                >
-                  {items.map((line, idx) => (
-                    <li key={idx}>{line.replace(/^-+\s*/, "")}</li>
-                  ))}
-                </ul>
-              );
-            }
-
-            return <p key={i}>{para}</p>;
-          })}
+                  className="mb-4 list-disc list-inside space-y-1 text-text"
+                  {...props}
+                />
+              ),
+              li: ({ node, ...props }) => (
+                <li className="text-sm sm:text-text leading-relaxed" {...props} />
+              ),
+              a: ({ node, ...props }) => (
+                <a
+                  className="text-primary hover:text-accent underline underline-offset-2"
+                  {...props}
+                />
+              ),
+              code: ({ node, inline, ...props }) =>
+                inline ? (
+                  <code
+                    className="rounded bg-surface px-1 py-0.5 text-[0.85em] text-accent"
+                    {...props}
+                  />
+                ) : (
+                  <code
+                    className="block rounded-2xl bg-surface/80 border border-primary/25 px-3 py-2 text-xs sm:text-sm text-text whitespace-pre-wrap"
+                    {...props}
+                  />
+                ),
+            }}
+          >
+            {post.body}
+          </ReactMarkdown>
         </article>
 
         {/* NEXT / PREVIOUS NAV */}
         <nav className="pt-10 border-t border-primary/20">
           <div className="flex items-center justify-between gap-6 text-xs sm:text-sm">
-
             {/* Previous (older) */}
             {previousPost ? (
               <Link
@@ -141,7 +167,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : (
               <div />
             )}
-
           </div>
         </nav>
       </div>

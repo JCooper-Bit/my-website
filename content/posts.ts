@@ -17,7 +17,7 @@ export const posts: Post[] = [
     date: "2025-10-29",
     tags: ["Rust", "Maths", "Linear Algebra", "Lars"],
     body: `
-Welcome to the companion guides for the \`lars\` crate.
+Welcome to the companion guides for the lars crate.
 
 Alongside developing the crate itself, this series is designed to help you build your own linear algebra functionality from the ground up. Each guide focuses on a small, well-defined task so you can learn and implement concepts step by step. The idea is to make the process approachable, modular, and transferable whether you want to follow the full series or just complete a few parts.
 
@@ -44,71 +44,127 @@ You can treat the guides as self-contained modules or as chapters in a longer co
 
 ## Modularity and design
 
-Each guide is written to stand on its own. You can pick the parts you need or follow the whole sequence. This mirrors how the \`lars\` crate is structured: small, reusable components that can be combined into a full linear algebra library.
+Each guide is written to stand on its own. You can pick the parts you need or follow the whole sequence. This mirrors how the lars crate is structured: small, reusable components that can be combined into a full linear algebra library.
 
 ## Project and author
 
-The code and guides live in the \`lars\` repository on GitHub. Feedback, contributions and suggestions are very welcome.
+The code and guides live in the lars repository on GitHub. Feedback, contributions and suggestions are very welcome.
 
     `.trim(),
   },
-  {
-  slug: "lars-introduction",
-  title: "Lars: Introduction & Design Goals",
-  excerpt:
-    "An introduction to the lars project — a modular linear algebra crate designed to be built and understood from the ground up.",
-  date: "2025-10-30",
-  tags: ["Rust", "Linear Algebra", "Lars", "Open Source"],
-  body: `
-This post introduces the lars project: a modular, from-scratch linear algebra crate designed to be both practical and educational.
 
-The goal of lars is not just to provide a usable math library, but to act as a guided learning tool for developers who want to understand how linear algebra is implemented at a low level.
+   {
+    slug: "lars-intro",
+    title: "lars Part 1 - Intro & Setup",
+    excerpt:
+      "Episode 1 of the lars learning series, in this episode, we will get everything setup ready to develop our own LA crate.",
+    date: "2025-10-29",
+    tags: ["Rust", "Maths", "Linear Algebra", "Lars"],
+    body: `## Introduction and Setup
 
-## What is lars?
+This series is written to guide you through building your own linear
+algebra functionality from scratch.
 
-lars is a Rust crate focused on:
+Each section of the series focuses on a small, contained piece of
+functionality. By the end, you'll have the foundation of a lightweight,
+modular linear algebra library that you can adapt for your own projects.
+You'll also gain a better understanding of the mathematics behind it.
 
-- Clean, minimal linear algebra primitives
-- Strong type safety
-- Extensible, modular design
-- Educational value alongside real-world usage
+The examples are written in **Rust**, but the concepts are
+**language-agnostic**. If you're comfortable in another language, you
+can follow along just as easily.
 
-It is intended for use in graphics, physics, simulation and general mathematical computation.
+------------------------------------------------------------------------
 
-## Design philosophy
+## What You'll Need
 
-The crate is designed around a few core ideas:
+Before getting started, make sure you have the following:
 
-- Small, composable building blocks
-- Clear mathematical correctness
-- Readable implementations over clever tricks
-- Extensibility over monolithic design
+-   **A recent version of Rust installed**
 
-Rather than hiding the maths behind heavy abstractions, lars tries to expose the structure in a way that encourages learning.
+    You can check with:
 
-## Relationship to the guide series
+    \`\`\` bash
+    rustc --version
+    \`\`\`
 
-The lars learning series mirrors the internal structure of the crate. Each guide walks through building a mathematical concept from scratch, while the crate provides the polished, reusable implementation.
+    If it's not installed, visit:\
+    https://rustup.rs
 
-You can follow the guides as tutorials, use the crate directly, or do both side-by-side.
+-   **A text editor or IDE that supports Rust**
 
-## External reference
+    VS Code with the \`rust-analyzer\` extension is a good option.
 
-The original introduction and guide structure can be found here:
-https://jcooper-bit.github.io/lars-site/intro/
+-   **Basic familiarity with programming concepts and some comfort with
+    Rust syntax**
 
-That page acts as the conceptual root for the entire Lars learning series.
+    You don't need to be an expert --- we'll go step by step.
 
-## What’s next
+------------------------------------------------------------------------
 
-Future posts will dive deeper into:
-- 2D and 3D vector implementations
-- Matrices and transformations
-- Real-world applications such as graphics and physics simulation
+## Project Setup
 
-If you’re interested in Rust, maths, or low-level numerical tooling, this series is for you.
-`.trim(),
-},
+Create a new Rust project to follow along:
 
+\`\`\` bash
+cargo new linear_algebra_from_scratch
+cd linear_algebra_from_scratch
+\`\`\`
+
+This will generate a new folder with a basic \`Cargo.toml\` and
+\`src/main.rs\`.
+
+You can either implement everything directly in \`main.rs\` or create
+separate modules as the project grows.
+
+For example:
+
+\`\`\` text
+src/
+├── main.rs
+└── math/
+    ├── vec2.rs
+    ├── vec3.rs
+    └── matrix.rs
+\`\`\`
+
+We'll expand on this structure as we move through the guides.
+
+------------------------------------------------------------------------
+
+## How to Follow the Series
+
+Each guide introduces one concept at a time --- starting simple and
+building complexity gradually. You'll find three main sections in each:
+
+-   **Concepts / Mathematical Background**\
+    An explanation of the underlying math and how it's represented
+    programmatically.
+
+-   **Implementation**\
+    A series of tasks to write the code yourself.
+
+-   **Solutions**\
+    A complete set of solutions showing one way to implement the
+    concept.
+
+You're encouraged to write and test your own code *before* checking the
+solution.\
+There's no single "right" way to implement these ideas, and exploring
+different approaches is part of the learning process.
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+When you're ready, continue to the first real task: **implementing a 2D
+vector type**.
+
+This will cover construction, basic arithmetic, and a few common
+operations used throughout linear algebra.
+
+**Continue to the next guide →**
+`
+   },
 
 ];
