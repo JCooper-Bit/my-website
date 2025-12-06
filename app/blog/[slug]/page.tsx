@@ -113,18 +113,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {...props}
                 />
               ),
-              code: ({ node, inline, ...props }) =>
-                inline ? (
-                  <code
-                    className="rounded bg-surface px-1 py-0.5 text-[0.85em] text-accent"
-                    {...props}
-                  />
-                ) : (
-                  <code
-                    className="block rounded-2xl bg-surface/80 border border-primary/25 px-3 py-2 text-xs sm:text-sm text-text whitespace-pre-wrap"
-                    {...props}
-                  />
-                ),
             }}
           >
             {post.body}

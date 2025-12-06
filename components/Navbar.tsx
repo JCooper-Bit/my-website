@@ -14,13 +14,13 @@ export default function Navbar() {
         </Link>
 
         <div className="flex gap-6 text-sm font-medium">
-          <Link href="#projects" className="text-text hover:opacity-80 hover:text-primary transition">
+          <Link href="/#projects" className="text-text hover:opacity-80 hover:text-primary transition">
             Projects
           </Link>
           <Link href="/blog" className="text-text hover:opacity-80 hover:text-primary transition">
             Blog
           </Link>
-          <Link href="#contact" className="text-text hover:opacity-80 hover:text-primary transition">
+          <Link href="/#contact" className="text-text hover:opacity-80 hover:text-primary transition">
             Contact
           </Link>
         </div>
