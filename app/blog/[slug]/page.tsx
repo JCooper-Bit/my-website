@@ -1,12 +1,92 @@
+
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { posts } from "@/content/posts";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
+
 
 type BlogPostPageProps = {
   // Next App Router passes params as a Promise
   params: Promise<{ slug: string }>;
+};
+const markdownComponents: Components = {
+  h1({ node, ...props }) {
+    return (
+      <h1
+        className="text-2xl sm:text-3xl font-semibold text-text"
+        {...props}
+      />
+    );
+  },
+  h2({ node, ...props }) {
+    return (
+      <h2
+        className="pt-6 text-base sm:text-lg font-semibold text-text"
+        {...props}
+      />
+    );
+  },
+  h3({ node, ...props }) {
+    return (
+      <h3
+        className="pt-4 text-sm sm:text-base font-semibold text-text"
+        {...props}
+      />
+    );
+  },
+  p({ node, ...props }) {
+    return (
+      <p
+        className="text-sm sm:text-base leading-relaxed text-text"
+        {...props}
+      />
+    );
+  },
+  ul({ node, ...props }) {
+    return (
+      <ul
+        className="mb-4 list-disc list-inside space-y-1 text-text"
+        {...props}
+      />
+    );
+  },
+  li({ node, ...props }) {
+    return (
+      <li className="text-sm sm:text-base leading-relaxed" {...props} />
+    );
+  },
+  a({ node, ...props }) {
+    return (
+      <a
+        className="text-primary hover:text-accent underline underline-offset-2"
+        {...props}
+      />
+    );
+  },
+  code({ node, inline, className, children, ...props }) {
+    if (inline) {
+      return (
+        <code
+          className="rounded bg-surface px-1 py-0.5 text-[0.85em] text-accent"
+          {...props}
+        >
+          {children}
+        </code>
+      );
+    }
+
+    return (
+      <code
+        className="block rounded-2xl bg-surface/80 border border-primary/25 px-3 py-2 text-xs sm:text-sm text-text whitespace-pre-wrap"
+        {...props}
+      >
+        {children}
+      </code>
+    );
+  },
 };
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -70,52 +150,60 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         <article className="prose prose-invert max-w-none text-text prose-p:mb-4 prose-headings:mt-6 prose-headings:mb-2 prose-li:marker:text-primary">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              h1: ({ node, ...props }) => (
-                <h1
-                  className="text-2xl sm:text-3xl font-semibold text-text"
-                  {...props}
-                />
-              ),
-              h2: ({ node, ...props }) => (
-                <h2
-                  className="pt-6 text-text sm:text-lg font-semibold text-text"
-                  {...props}
-                />
-              ),
-              h3: ({ node, ...props }) => (
-                <h3
-                  className="pt-4 text-sm sm:text-text font-semibold text-text"
-                  {...props}
-                />
-              ),
-              p: ({ node, ...props }) => (
-                <p
-                  className="text-sm sm:text-text leading-relaxed text-text"
-                  {...props}
-                />
-              ),
-              ul: ({ node, ...props }) => (
-                <ul
-                  className="mb-4 list-disc list-inside space-y-1 text-text"
-                  {...props}
-                />
-              ),
-              li: ({ node, ...props }) => (
-                <li className="text-sm sm:text-text leading-relaxed" {...props} />
-              ),
-              a: ({ node, ...props }) => (
-                <a
-                  className="text-primary hover:text-accent underline underline-offset-2"
-                  {...props}
-                />
-              ),
-            }}
-          >
-            {post.body}
-          </ReactMarkdown>
+<ReactMarkdown
+  remarkPlugins={[remarkGfm, remarkMath]}
+  rehypePlugins={[rehypeKatex]}
+  components={{
+    h1: ({ node, ...props }) => (
+      <h1
+        className="text-2xl sm:text-3xl font-semibold text-text"
+        {...props}
+      />
+    ),
+    h2: ({ node, ...props }) => (
+      <h2
+        className="pt-6 text-base sm:text-lg font-semibold text-text"
+        {...props}
+      />
+    ),
+    p: ({ node, ...props }) => (
+      <p
+        className="text-sm sm:text-base leading-relaxed text-text"
+        {...props}
+      />
+    ),
+    ul: ({ node, ...props }) => (
+      <ul
+        className="mb-4 list-disc list-inside space-y-1 text-text"
+        {...props}
+      />
+    ),
+    li: ({ node, ...props }) => (
+      <li className="text-sm sm:text-base leading-relaxed" {...props} />
+    ),
+    a: ({ node, ...props }) => (
+      <a
+        className="text-primary hover:text-accent underline underline-offset-2"
+        {...props}
+      />
+    ),
+    code: ({ node, inline, ...props }) =>
+      inline ? (
+        <code
+          className="rounded bg-surface px-1 py-0.5 text-[0.85em] text-accent"
+          {...props}
+        />
+      ) : (
+        <code
+          className="block rounded-2xl bg-surface/80 border border-primary/25 px-3 py-2 text-xs sm:text-sm text-text whitespace-pre-wrap"
+          {...props}
+        />
+      ),
+  }}
+>
+  {post.body}
+</ReactMarkdown>
+
         </article>
 
         {/* NEXT / PREVIOUS NAV */}

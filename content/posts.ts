@@ -58,7 +58,7 @@ The code and guides live in the lars repository on GitHub. Feedback, contributio
     title: "lars Part 1 - Intro & Setup",
     excerpt:
       "Episode 1 of the lars learning series, in this episode, we will get everything setup ready to develop our own LA crate.",
-    date: "2025-10-29",
+    date: "2025-10-30",
     tags: ["Rust", "Maths", "Linear Algebra", "Lars"],
     body: `## Introduction and Setup
 
