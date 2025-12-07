@@ -90,18 +90,18 @@ const recentPosts = [...posts]
         </section>
 
       {/* RECENT BLOG POSTS */}
-<section
-  id="recent-posts"
-  className="w-full space-y-6 opacity-0 animate-[slide-up_700ms_ease-out_forwards] [animation-delay:260ms]"
->
-  <header className="space-y-2">
-    <h2 className="text-xl sm:text-2xl font-semibold text-text">
-      Recent posts
-    </h2>
-    <p className="text-sm text-muted max-w-md">
-      Latest writing on development, hardware, and experiments.
-    </p>
-  </header>
+      <section
+        id="recent-posts"
+        className="w-full space-y-6 opacity-0 animate-[slide-up_700ms_ease-out_forwards] [animation-delay:260ms]"
+      >
+        <header className="space-y-2">
+          <h2 className="text-xl sm:text-2xl font-semibold text-text">
+            Recent posts
+          </h2>
+          <p className="text-sm text-muted max-w-md">
+            Latest writing on development, hardware, and experiments.
+          </p>
+        </header>
 
   <div className="space-y-4">
     {recentPosts.map((post) => (
