@@ -1,4 +1,4 @@
-
+import { post_lars_vec2 } from "./posts/Vec2_lars";
 export type Post = {
   slug: string;
   title: string;
@@ -167,4 +167,6 @@ operations used throughout linear algebra.
 `
    },
 
+  post_lars_vec2,
+  
 ];

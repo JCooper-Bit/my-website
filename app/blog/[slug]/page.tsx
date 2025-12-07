@@ -1,40 +1,92 @@
-
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { posts } from "@/content/posts";
+
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 type BlogPostPageProps = {
-  // Next App Router passes params as a Promise
   params: Promise<{ slug: string }>;
+};
+
+const markdownComponents: Components = {
+  h1({ node, ...props }) {
+    return (
+      <h1
+        className="text-2xl sm:text-3xl font-semibold text-text mt-4 mb-3"
+        {...props}
+      />
+    );
+  },
+  h2({ node, ...props }) {
+    return (
+      <h2
+        className="text-xl sm:text-2xl font-semibold text-text mt-6 mb-2"
+        {...props}
+      />
+    );
+  },
+  h3({ node, ...props }) {
+    return (
+      <h3
+        className="text-lg sm:text-xl font-semibold text-text mt-5 mb-2"
+        {...props}
+      />
+    );
+  },
+  p({ node, ...props }) {
+    return (
+      <p
+        className="text-sm sm:text-text leading-relaxed text-text mb-3"
+        {...props}
+      />
+    );
+  },
+  ul({ node, ...props }) {
+    return (
+      <ul
+        className="list-disc list-inside space-y-1 text-sm sm:text-text text-text mb-4"
+        {...props}
+      />
+    );
+  },
+  li({ node, ...props }) {
+    return <li className="leading-relaxed" {...props} />;
+  },
+  a({ node, ...props }) {
+    return (
+      <a
+        className="text-primary hover:text-accent underline underline-offset-2"
+        {...props}
+      />
+    );
+  },
 };
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
 
-  // Sort newest → oldest
+  // newest → oldest
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  const postIndex = sortedPosts.findIndex((p) => p.slug === slug);
-  const post = sortedPosts[postIndex];
+  const index = sortedPosts.findIndex((p) => p.slug === slug);
+  const post = sortedPosts[index];
 
   if (!post) {
     return notFound();
   }
 
-  const previousPost = sortedPosts[postIndex + 1]; // older
-  const nextPost = sortedPosts[postIndex - 1]; // newer
+  const previousPost = sortedPosts[index + 1] ?? null; // older
+  const nextPost = sortedPosts[index - 1] ?? null;     // newer
 
   return (
     <main className="min-h-screen bg-base px-6 py-20">
       <div className="mx-auto w-full max-w-3xl space-y-10">
-        {/* HEADER */}
+        {/* Header */}
         <header className="space-y-3 text-text">
           <p className="text-xs text-muted">
             <Link
@@ -58,7 +110,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               })}
             </span>
 
-            {post.tags.length > 0 && (
+            {post.tags?.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
                   <span
@@ -73,72 +125,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
 
-        <article className="prose prose-invert max-w-none text-text prose-p:mb-4 prose-headings:mt-6 prose-headings:mb-2 prose-li:marker:text-primary">
-<ReactMarkdown
-  remarkPlugins={[remarkGfm, remarkMath]}
-  rehypePlugins={[rehypeKatex]}
-  components={{
-    h1: ({ node, ...props }) => (
-      <h1
-        className="text-2xl sm:text-3xl font-semibold text-text"
-        {...props}
-      />
-    ),
-    h2: ({ node, ...props }) => (
-      <h2
-        className="pt-6 text-text sm:text-lg font-semibold text-text"
-        {...props}
-      />
-    ),
-    p: ({ node, ...props }) => (
-      <p
-        className="text-sm sm:text-text leading-relaxed text-text"
-        {...props}
-      />
-    ),
-    ul: ({ node, ...props }) => (
-      <ul
-        className="mb-4 list-disc list-inside space-y-1 text-text"
-        {...props}
-      />
-    ),
-    li: ({ node, ...props }) => (
-      <li className="text-sm sm:text-text leading-relaxed" {...props} />
-    ),
-    a: ({ node, ...props }) => (
-      <a
-        className="text-primary hover:text-accent underline underline-offset-2"
-        {...props}
-      />
-    ),
-    code: ({ node, inline, className, children, ...props }: any) =>
-      inline ? (
-        <code
-          className="rounded bg-surface px-1 py-0.5 text-[0.85em] text-accent"
-          {...props}
-        >
-          {children}
-        </code>
-      ) : (
-        <code
-          className="block rounded-2xl bg-surface/80 border border-primary/25 px-3 py-2 text-xs sm:text-sm text-text whitespace-pre-wrap"
-          {...props}
-        >
-          {children}
-        </code>
-      ),
-
-  }}
->
-  {post.body}
-</ReactMarkdown>
-
+        {/* Article */}
+        <article className="text-text">
+          <ReactMarkdown
+            remarkPlugins={[remarkMath, remarkGfm]}
+            rehypePlugins={[rehypeKatex]}
+            components={markdownComponents}
+          >
+            {post.body}
+          </ReactMarkdown>
         </article>
 
-        {/* NEXT / PREVIOUS NAV */}
+        {/* Prev / Next */}
         <nav className="pt-10 border-t border-primary/20">
           <div className="flex items-center justify-between gap-6 text-xs sm:text-sm">
-            {/* Previous (older) */}
             {previousPost ? (
               <Link
                 href={`/blog/${previousPost.slug}`}
@@ -155,7 +155,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div />
             )}
 
-            {/* Next (newer) */}
             {nextPost ? (
               <Link
                 href={`/blog/${nextPost.slug}`}
