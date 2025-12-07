@@ -86,13 +86,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ),
     h2: ({ node, ...props }) => (
       <h2
-        className="pt-6 text-base sm:text-lg font-semibold text-text"
+        className="pt-6 text-text sm:text-lg font-semibold text-text"
         {...props}
       />
     ),
     p: ({ node, ...props }) => (
       <p
-        className="text-sm sm:text-base leading-relaxed text-text"
+        className="text-sm sm:text-text leading-relaxed text-text"
         {...props}
       />
     ),
@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       />
     ),
     li: ({ node, ...props }) => (
-      <li className="text-sm sm:text-base leading-relaxed" {...props} />
+      <li className="text-sm sm:text-text leading-relaxed" {...props} />
     ),
     a: ({ node, ...props }) => (
       <a
