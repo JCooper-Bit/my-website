@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} text-text bg-base antialiased`}
       >
-        <Anayltics />
+        <Analytics />
         <Navbar />
         {children}
         <Footer />
