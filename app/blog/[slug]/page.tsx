@@ -69,7 +69,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
 
-        {/* MAIN POST CONTENT – rendered with react-markdown */}
         <article className="prose prose-invert max-w-none text-text prose-p:mb-4 prose-headings:mt-6 prose-headings:mb-2 prose-li:marker:text-primary">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
