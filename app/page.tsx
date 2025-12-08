@@ -5,7 +5,7 @@ import { posts } from "@/content/posts";
 import Link from "next/link";
 import { projects } from "@/content/projects";
 import ProjectCard from "@/components/ProjectCard";
-import { Github, Mail } from "lucide-react";
+import { Github, Mail, Disc3 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 const recentPosts = [
@@ -65,6 +65,17 @@ const recentPosts = [...posts]
             >
               <Mail size={20} />
             </Link>
+
+          
+            <Link
+              href="/music"
+              aria-label="Music"
+              className="text-muted hover:text-primary transition 
+                        hover:drop-shadow-[0_0_10px_rgba(137,180,250,0.7)]
+                        hover:-translate-y-0.5"
+            >
+              <Disc3 size={20} />
+            </Link>   
           </nav>
         </section>
 
