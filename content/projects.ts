@@ -20,7 +20,7 @@ export const projects: Project[] = [
   id: "personal-portfolio",
   title: "Personal Portfolio",
   description:
-    "A minimal, futuristic personal website built to showcase my projects, experiments and writing. Designed with a Catppuccin-inspired palette, subtle animations and a fully data-driven project system.",
+    "A minimal, futuristic personal website built to showcase my projects, experiments and writing. Designed with a modern, simple palette, subtle animations and a fully data-driven project system.",
   tech: ["Next.js", "TypeScript", "TailwindCSS", "Lucide Icons"],
   href: "/",
 },

@@ -1,5 +1,3 @@
-import { Disc3 } from "lucide-react";
-
 export default function Music() {
 	return (
 		<main className="min-h-screen bg-base px-6 py-20">
