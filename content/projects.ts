@@ -22,7 +22,7 @@ export const projects: Project[] = [
   description:
     "A minimal, futuristic personal website built to showcase my projects, experiments and writing. Designed with a modern, simple palette, subtle animations and a fully data-driven project system.",
   tech: ["Next.js", "TypeScript", "TailwindCSS", "Lucide Icons"],
-  href: "/",
+  href: "https://github.com/JCooper-Bit/my-website",
 },
 
 ];
