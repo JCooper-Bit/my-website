@@ -7,7 +7,7 @@ import 'katex/dist/katex.min.css';
 import { useEffect, useRef } from 'react';
 //@ts-ignore
 export default function KatexSpan({ text, ...delegated }) {
-  const katexTextRef = useRef();
+  const katexTextRef = useRef("");
   useEffect(() => {
     if (katexTextRef.current) {
       renderMathInElement(katexTextRef.current, {
@@ -20,7 +20,7 @@ export default function KatexSpan({ text, ...delegated }) {
   }, [text]);
 
   return (
-    <div ref={katexTextRef} {...delegated}>
+    <div {...delegated}>
       {text}
     </div>
   );
