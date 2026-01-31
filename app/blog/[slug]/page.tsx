@@ -1,69 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { posts } from "@/content/posts";
-
-import ReactMarkdown, { type Components } from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-
+import { postComponents, posts } from "@/content/posts";
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const markdownComponents: Components = {
-  h1({ node, ...props }) {
-    return (
-      <h1
-        className="text-2xl sm:text-3xl font-semibold text-text mt-4 mb-3"
-        {...props}
-      />
-    );
-  },
-  h2({ node, ...props }) {
-    return (
-      <h2
-        className="text-xl sm:text-2xl font-semibold text-text mt-6 mb-2"
-        {...props}
-      />
-    );
-  },
-  h3({ node, ...props }) {
-    return (
-      <h3
-        className="text-lg sm:text-xl font-semibold text-text mt-5 mb-2"
-        {...props}
-      />
-    );
-  },
-  p({ node, ...props }) {
-    return (
-      <p
-        className="text-sm sm:text-text leading-relaxed text-text mb-3"
-        {...props}
-      />
-    );
-  },
-  ul({ node, ...props }) {
-    return (
-      <ul
-        className="list-disc list-inside space-y-1 text-sm sm:text-text text-text mb-4"
-        {...props}
-      />
-    );
-  },
-  li({ node, ...props }) {
-    return <li className="leading-relaxed" {...props} />;
-  },
-  a({ node, ...props }) {
-    return (
-      <a
-        className="text-primary hover:text-accent underline underline-offset-2"
-        {...props}
-      />
-    );
-  },
-};
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
@@ -80,9 +21,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     return notFound();
   }
 
+  const PostComponent = postComponents[slug as keyof typeof postComponents];
+
+  if (!PostComponent) return notFound();
+
   const previousPost = sortedPosts[index + 1] ?? null; // older
   const nextPost = sortedPosts[index - 1] ?? null;     // newer
-
   return (
     <main className="min-h-screen bg-base px-6 py-20">
       <div className="mx-auto w-full max-w-3xl space-y-10">
@@ -127,15 +71,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Article */}
         <article className="text-text">
-          <ReactMarkdown
-            remarkPlugins={[remarkMath, remarkGfm]}
-            rehypePlugins={[rehypeKatex]}
-            components={markdownComponents}
-          >
-            {post.body}
-          </ReactMarkdown>
+            <PostComponent />
         </article>
-
+       
+      {/* Author panel */}
+      <section className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 border-t border-primary/20 pt-6 text-text">
+        <img
+          src="/favicon.ico" // replace with your author avatar path
+          alt="John Doe"
+          className="w-16 h-16 rounded-full object-cover"
+        />
+        <div className="flex-1 space-y-1">
+          <p className="font-semibold">JayCee</p>
+          <p className="text-sm text-muted">
+            JayCee is a  UK-based developer, hardware hacker, student and musician
+          </p>
+          <a
+            href="https://jayc.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-accent text-sm transition"
+          >
+            Visit website
+          </a>
+        </div>
+      </section> 
         {/* Prev / Next */}
         <nav className="pt-10 border-t border-primary/20">
           <div className="flex items-center justify-between gap-6 text-xs sm:text-sm">
@@ -154,7 +114,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : (
               <div />
             )}
-
             {nextPost ? (
               <Link
                 href={`/blog/${nextPost.slug}`}
