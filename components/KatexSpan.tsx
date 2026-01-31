@@ -1,6 +1,7 @@
 
 
 'use client';
+// @ts-ignore
 import renderMathInElement from 'katex/dist/contrib/auto-render.js';
 import 'katex/dist/katex.min.css';
 import { useEffect, useRef } from 'react';

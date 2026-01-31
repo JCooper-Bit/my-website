@@ -88,7 +88,6 @@ export const post_lars_vec2_component = () =>  {
             <KatexSpan text={`$$\\hat x = \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix}$$`} />
           </div>
 
-          <p>
             You will often see unit vectors denoted with a hat symbol (^) above
             the vector name.
             <br />
@@ -102,7 +101,6 @@ export const post_lars_vec2_component = () =>  {
               <KatexSpan text={`$$\\hat j$$`} />
             </span>
             .
-          </p>
 
           <p>
             Therefore, to express a vector with x-component 3 and y-component 4
