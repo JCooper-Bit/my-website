@@ -1,52 +1,21 @@
-"use client";
+'use client';
+import 'katex/dist/katex.min.css';
+import katex from 'katex';
+import { FC } from 'react';
 
-import katex from "katex";
-import "katex/dist/katex.min.css";
-import React from "react";
-
-type KatexInlineProps = React.HTMLAttributes<HTMLSpanElement> & {
-  /** latex only preferred: "\\sqrt{x^2+y^2}" (but "$...$" also supported) */
+interface KatexProps {
   text: string;
-};
-
-function stripDelimiters(input: string) {
-  // remove wrapping $...$ or $$...$$ if provided
-  const trimmed = input.trim();
-
-  if (
-    (trimmed.startsWith("$$") && trimmed.endsWith("$$")) ||
-    (trimmed.startsWith("$") && trimmed.endsWith("$"))
-  ) {
-    return trimmed.replace(/^\$\$?/, "").replace(/\$\$?$/, "").trim();
-  }
-
-  return trimmed;
+  className?: string;
 }
 
-export default function KatexInline({
-  text,
-  className,
-  ...delegated
-}: KatexInlineProps) {
-  const latex = stripDelimiters(text);
-
-  const html = React.useMemo(() => {
-    try {
-      return katex.renderToString(latex, {
-        displayMode: false, // <- forces inline always
-        throwOnError: false,
-        strict: "ignore",
-      });
-    } catch {
-      return latex;
-    }
-  }, [latex]);
-
+// Inline component
+// @ts-ignore
+export default function KatexInline({ text, className }) {
+  const html = katex.renderToString(text, { throwOnError: false });
   return (
     <span
-      {...delegated}
       className={className}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
-}
+};

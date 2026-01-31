@@ -66,7 +66,7 @@ export const post_lars_vec2_component = () =>  {
           </p>
 
           <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
-            <KatexSpan text={`$$\\mathbf v = \\begin{bmatrix} x \\\\ y \\end{bmatrix}$$`} />
+            <KatexSpan text={`\\mathbf v = \\begin{bmatrix} x \\\\ y \\end{bmatrix}`} className={undefined} />
           </div>
         </div>
 
@@ -85,7 +85,7 @@ export const post_lars_vec2_component = () =>  {
           </p>
 
           <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
-            <KatexSpan text={`$$\\hat x = \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix}$$`} />
+            <KatexSpan text={`\\hat x = \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix}`} className={undefined} />
           </div>
 
             You will often see unit vectors denoted with a hat symbol (^) above
@@ -94,11 +94,11 @@ export const post_lars_vec2_component = () =>  {
             Additionally, you may see the unit vector for the x direction
             written as{" "}
             <span className="inline-flex items-center gap-2">
-              <KatexSpan text={`$$\\hat i$$`} />
+              <KatexSpan text={`\\hat i`} className={undefined} />
             </span>{" "}
             and for the y direction as{" "}
             <span className="inline-flex items-center gap-2">
-              <KatexSpan text={`$$\\hat j$$`} />
+              <KatexSpan text={`\\hat j`} className={undefined} />
             </span>
             .
 
@@ -108,7 +108,7 @@ export const post_lars_vec2_component = () =>  {
           </p>
 
           <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
-            <KatexSpan text={`$$\\mathbf v = 3\\hat i + 4\\hat j$$`} />
+            <KatexSpan text={`\\mathbf v = 3\\hat i + 4\\hat j`} className={undefined} />
           </div>
         </div>
 
@@ -139,12 +139,12 @@ export const post_lars_vec2_component = () =>  {
           </p>
 
           <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
-            <KatexSpan text={`$$|\\mathbf v| = \\sqrt{x^2 + y^2}$$`} />
+            <KatexSpan text={`|\\mathbf v| = \\sqrt{x^2 + y^2}`} className={undefined} />
           </div>
 
           <p>
-            The notation for a vector <KatexInline text={`$$v$$`} />
-            &apos;s magnitude is <KatexInline text={`$$|\\mathbf v|$$`} />.
+            The notation for a vector <KatexInline text={`v`} className={undefined} />
+            &apos;s magnitude is <KatexInline text={`|\\mathbf v|`} className={undefined} />.
           </p>
         </div>
 
@@ -162,13 +162,11 @@ export const post_lars_vec2_component = () =>  {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$\\mathbf a = \\begin{bmatrix} a_x \\\\ a_y \\end{bmatrix}$$`}
-              />
+                  text={`\\mathbf a = \\begin{bmatrix} a_x \\\\ a_y \\end{bmatrix}`} className={undefined}              />
             </div>
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$\\mathbf b = \\begin{bmatrix} b_x \\\\ b_y \\end{bmatrix}$$`}
-              />
+                  text={`\\mathbf b = \\begin{bmatrix} b_x \\\\ b_y \\end{bmatrix}`} className={undefined}              />
             </div>
           </div>
 
@@ -177,13 +175,11 @@ export const post_lars_vec2_component = () =>  {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$\\mathbf a + \\mathbf b = \\begin{bmatrix} a_x + b_x \\\\ a_y + b_y \\end{bmatrix}$$`}
-              />
+                  text={`\\mathbf a + \\mathbf b = \\begin{bmatrix} a_x + b_x \\\\ a_y + b_y \\end{bmatrix}`} className={undefined}              />
             </div>
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$\\mathbf a - \\mathbf b = \\begin{bmatrix} a_x - b_x \\\\ a_y - b_y \\end{bmatrix}$$`}
-              />
+                  text={`\\mathbf a - \\mathbf b = \\begin{bmatrix} a_x - b_x \\\\ a_y - b_y \\end{bmatrix}`} className={undefined}              />
             </div>
           </div>
         </div>
@@ -201,7 +197,7 @@ export const post_lars_vec2_component = () =>  {
           </p>
 
           <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
-            <KatexSpan text={`$$\\mathbf a = \\begin{bmatrix} x \\\\ y \\end{bmatrix}$$`} />
+            <KatexSpan text={`\\mathbf a = \\begin{bmatrix} x \\\\ y \\end{bmatrix}`} className={undefined} />
           </div>
 
           <p>
@@ -213,13 +209,11 @@ export const post_lars_vec2_component = () =>  {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$k \\times \\mathbf a = \\begin{bmatrix} k \\times x \\\\ k \\times y \\end{bmatrix}$$`}
-              />
+                  text={`k \\times \\mathbf a = \\begin{bmatrix} k \\times x \\\\ k \\times y \\end{bmatrix}`} className={undefined}              />
             </div>
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$\\frac{\\mathbf a}{k} = \\begin{bmatrix} \\frac{x}{k} \\\\ \\frac{y}{k} \\end{bmatrix}$$`}
-              />
+                  text={`\\frac{\\mathbf a}{k} = \\begin{bmatrix} \\frac{x}{k} \\\\ \\frac{y}{k} \\end{bmatrix}`} className={undefined}              />
             </div>
           </div>
         </div>
@@ -234,7 +228,7 @@ export const post_lars_vec2_component = () =>  {
           </p>
 
           <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
-            <KatexSpan text={`$$\\mathbf a \\cdot \\mathbf b$$`} />
+            <KatexSpan text={`\\mathbf a \\cdot \\mathbf b`} className={undefined} />
           </div>
 
           <p>There are 2 methods to calculate the dot product.</p>
@@ -244,16 +238,14 @@ export const post_lars_vec2_component = () =>  {
 
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$\\mathbf a \\cdot \\mathbf b = |\\mathbf a| \\times |\\mathbf b| \\times \\cos(\\theta) \\\\$$`}
-              />
+                  text={`\\mathbf a \\cdot \\mathbf b = |\\mathbf a| \\times |\\mathbf b| \\times \\cos(\\theta) \\\\`} className={undefined}              />
             </div>
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
             <div className="space-y-2 text-sm text-muted">
-                <KatexSpan text={`$$|\\mathbf a|\\,\\text{ is the magnitude of }\\,\\mathbf a$$`} />
-                <KatexSpan text={`$$|\\mathbf b|\\,\\text{ is the magnitude of }\\,\\mathbf b$$`} />
+                <KatexSpan text={`|\\mathbf a|\\,\\text{ is the magnitude of }\\,\\mathbf a`} className={undefined} />
+                <KatexSpan text={`|\\mathbf b|\\,\\text{ is the magnitude of }\\,\\mathbf b`} className={undefined} />
                 <KatexSpan
-                  text={`$$\\theta\\,\\text{ is the angle between }\\,\\mathbf a\\,\\text{ and }\\,\\mathbf b$$`}
-                />
+                    text={`\\theta\\,\\text{ is the angle between }\\,\\mathbf a\\,\\text{ and }\\,\\mathbf b`} className={undefined}                />
                 </div>
             </div>
           </div>
@@ -263,13 +255,12 @@ export const post_lars_vec2_component = () =>  {
 
             <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
               <KatexSpan
-                text={`$$\\mathbf a \\cdot \\mathbf b = (\\mathbf a_x \\times \\mathbf b_x) + (\\mathbf a_y \\times \\mathbf b_y)$$`}
-              />
+                  text={`\\mathbf a \\cdot \\mathbf b = (\\mathbf a_x \\times \\mathbf b_x) + (\\mathbf a_y \\times \\mathbf b_y)`} className={undefined}              />
             </div>
 
             <p>
-              Where <KatexInline text={`$$\\mathbf a_x$$`} /> and{" "}
-              <KatexInline text={`$$\\mathbf a_y$$`} /> are the x and y components
+              Where <KatexInline text={`\\mathbf a_x`} className={undefined} /> and{" "}
+              <KatexInline text={`\\mathbf a_y`} className={undefined} /> are the x and y components
               of vector <span className="font-semibold">a</span> respectively,
               and the same applies to vector <span className="font-semibold">b</span>.
             </p>

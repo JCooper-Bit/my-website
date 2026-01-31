@@ -1,27 +1,16 @@
 
-
 'use client';
-// @ts-ignore
-import renderMathInElement from 'katex/dist/contrib/auto-render.js';
 import 'katex/dist/katex.min.css';
-import { useEffect, useRef } from 'react';
-//@ts-ignore
-export default function KatexSpan({ text, ...delegated }) {
-  const katexTextRef = useRef("");
-  useEffect(() => {
-    if (katexTextRef.current) {
-      renderMathInElement(katexTextRef.current, {
-        delimiters: [
-          { left: '$$', right: '$$', display: true },
-          { left: '$', right: '$', display: false },
-        ],
-      });
-    }
-  }, [text]);
+import katex from 'katex';
+import { FC } from 'react';
 
+//@ts-ignore
+export default function KatexSpan ({ text, className })  {
+  const html = katex.renderToString(text, { throwOnError: false, displayMode: true });
   return (
-    <div {...delegated}>
-      {text}
-    </div>
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
-}
+};
