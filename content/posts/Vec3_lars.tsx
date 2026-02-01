@@ -22,7 +22,7 @@ export const post_lars_vec3_component = () =>  {
         <ul className="list-disc pl-6 space-y-2">
           <li>
             Understand how 3D vectors are represented mathematically and in
-            code, Including differences and similarities with 2D Vectors.
+            code, Including the differences and similarities with 2D Vectors.
           </li>
           <li>
             Implement a <code className="px-1 py-0.5 rounded bg-base/60">Vec3</code>{" "}
@@ -40,7 +40,7 @@ export const post_lars_vec3 = {
   slug: "lars-vec3-guide",
   title: "lars Learning Series – Part 3: 3D Vectors in Rust",
   excerpt:
-    "A complete guide to implementing a3D vector type in Rust, including vector arithmetic, magnitude, dot AND cross products, normalization, along with comprehensive unit tests.",
+    "A complete guide to implementing a 3D vector type in Rust, including vector arithmetic, magnitude, dot AND cross products, normalization, along with comprehensive unit tests.",
   date: "2026-2-1",
   tags: ["Rust", "Linear Algebra", "Lars"],
 }

@@ -1,6 +1,7 @@
 import Dropdown from "@/components/Dropdown";
 import KatexInline from "@/components/KatexInline";
 import KatexSpan from "@/components/KatexSpan";
+import VectorDiagram2D from "@/components/VectorDiagram2D";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -118,12 +119,12 @@ export const post_lars_vec2_component = () =>  {
 
           <figure className="space-y-3">
             <div className="relative w-full overflow-hidden rounded-2xl border border-primary/20 bg-base/40">
-              <Image
-                src="/images/vectordecomp.webp"
-                alt="A diagram showing vector decomposition"
-                width={1200}
-                height={700}
-                className="h-auto w-full"
+              <VectorDiagram2D
+                width={900}
+                height={520}
+                range={5}
+                vectors = {[{ x: 3, y: 4, label: "v", color: "#89b4fa" }]}
+                show_decomp={true}
               />
             </div>
             <figcaption className="text-sm text-muted">
