@@ -13,6 +13,8 @@ type Props = {
   title?: string
   subtitle?: string
   show_decomp?: boolean
+  show_theta?: boolean
+
 }
 
 export default function VectorDiagram2D({
@@ -21,6 +23,7 @@ export default function VectorDiagram2D({
   range = 10,
   vectors = [{ x: 2, y: 6, label: "u", color: "#a78bfa" }],
   show_decomp = false,
+  show_theta = true,
 }: Props) {
   // Co ords to SVG co ords
   const sx = (x: number) => ((x + range) / (2 * range)) * width
@@ -35,7 +38,7 @@ export default function VectorDiagram2D({
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className="w-full rounded-2xl bg-surface/80 border border-primary/25"
+      className="w-full rounded-2xl bg-surface/80 border border-primary/20"
     >
 <defs>
   {vectors.map((v, i) => (
@@ -96,7 +99,7 @@ export default function VectorDiagram2D({
       {vectors.map((v, i) => {
         const x2 = sx(v.x)
         const y2 = sy(v.y)
-        const color = v.color ?? "#22d3ee"
+        const color = v.color ?? "#89b4fa"
         const label = v.label ?? `v${i + 1}`
 
         // midpoint (for |v| label)
@@ -207,9 +210,11 @@ export default function VectorDiagram2D({
                   {` = ${v.y.toFixed(2)}`}
                 </text>
               </g>
-            )}
+)}
+
           </g>
         )
+
       })}
     </svg>
   )

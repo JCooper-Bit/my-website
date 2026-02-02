@@ -123,7 +123,7 @@ export const post_lars_vec2_component = () =>  {
                 width={900}
                 height={520}
                 range={5}
-                vectors = {[{ x: 3, y: 4, label: "v", color: "#89b4fa" }]}
+                vectors = {[{ x: 3, y: 4, label: "v", color: "#89b4fa" }] }
                 show_decomp={true}
               />
             </div>

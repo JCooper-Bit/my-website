@@ -3,7 +3,7 @@
 import { useId, useMemo, useState } from "react";
 
 type DropdownProps = {
-  title?: string; // e.g. "Solution"
+  title?: string;
   defaultOpen?: boolean;
   children: React.ReactNode;
 };
@@ -19,7 +19,7 @@ export default function Dropdown({
   const label = useMemo(() => (open ? "Hide" : "Show"), [open]);
 
   return (
-    <div className="my-6 overflow-hidden rounded-2xl border">
+    <div className="my-6 overflow-hidden rounded-2xl border border-primary/20 ">
       <button
         type="button"
         aria-expanded={open}
