@@ -66,16 +66,15 @@ const recentPosts = [...posts]
               <Mail size={20} />
             </Link>
 
-          
-            <Link
-              href="/music"
-              aria-label="Music"
-              className="text-muted hover:text-primary transition 
-                        hover:drop-shadow-[0_0_10px_rgba(137,180,250,0.7)]
-                        hover:-translate-y-0.5"
-            >
-              <Disc3 size={20} />
-            </Link>   
+            {/*<Link*/}
+            {/*  href="/music"*/}
+            {/*  aria-label="Music"*/}
+            {/*  className="text-muted hover:text-primary transition */}
+            {/*            hover:drop-shadow-[0_0_10px_rgba(137,180,250,0.7)]*/}
+            {/*            hover:-translate-y-0.5"*/}
+            {/*>*/}
+            {/*  <Disc3 size={20} />*/}
+            {/*</Link>   */}
           </nav>
         </section>
 
