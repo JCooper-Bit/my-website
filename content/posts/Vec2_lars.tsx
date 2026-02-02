@@ -90,7 +90,7 @@ export const post_lars_vec2_component = () =>  {
           </div>
 
             You will often see unit vectors denoted with a hat symbol (^) above
-            the vector name.
+            the vector component name.
             <br />
             Additionally, you may see the unit vector for the x direction
             written as{" "}
