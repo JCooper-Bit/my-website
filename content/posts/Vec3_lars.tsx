@@ -91,11 +91,41 @@ export const post_lars_vec3_component = () => {
       <hr className="border-primary/20" />
 
       <section className="space-y-4">
-        <h3 className="text-xl font-semibold">Background: What is a Vector in 2DS</h3>
+        <h3 className="text-xl font-semibold">Background: What is a Vector in 3D</h3>
           <p>
             Okay, so the same principles we discussed in the last part of the series also apply in 3D,
-            If you haven't read the last part, you can either find it <Link href={"/blog/lars-vec2-guide"} >here</Link> or
+            If you haven't worked through the last part, you can either find it <Link href={"/blog/lars-vec2-guide"} >here</Link> or
              you can find a brilliant introduction to 2D vectors <Link href={"https://www.mathsisfun.com/algebra/vectors.html"}>here</Link>.
+          </p>
+          <p>
+            The key difference between Vectors in 2D and 3D is simply that in 2D a vector has 2 components whereas in 3D, we must account for the extra possible direction with a third 
+            component "z".
+          </p>
+          <div className="rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center">
+          <KatexSpan text={`\\mathbf v = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}`} className={undefined} />
+          </div>
+          <p>Equivalently, we can notate a 3D vector using the unit vectors <KatexInline text={`\\hat i`} className={undefined} />, <KatexInline text={`\\hat j`} className={undefined} /> and <KatexInline text={`\\hat k`} className={undefined} />
+          </p>
+          <div className="relative rounded-2xl border border-primary/20 bg-base/40 p-4 flex justify-center items-center">
+            <h3 className="absolute top-4 left-4  font-semibold">
+              Example 1
+            </h3>
+
+            <KatexSpan
+              text={`\\mathbf v = \\begin{bmatrix} 3 \\\\ 4 \\\\ 5 \\end{bmatrix} = 3\\hat i + 4\\hat j + 5\\hat k`}
+              className={undefined}
+            />
+          </div>
+
+                  <hr className="border-primary/20" />
+
+          <h3 className="text-xl font-semibold">Visual Intuition: But what does it look like?</h3>
+          <p>
+            This is a brilliant question. To me, the simplest way to understand the components visually is to picture yourself as a fly a room. <br></br>
+            Firstly, you can move left/right, this represents a change in the x direction (or a change in the coefficient of  <KatexInline text={`\\hat i`} className={undefined} />).
+            Next, you can move up and down (a change in the coefficient of  <KatexInline text={`\\hat j`} className={undefined} />).
+            <br></br>Now this is the new bit: in 3D, we can also move deeper into the room, this is a represented mathematically as a change in the coefficient of  <KatexInline text={`\\hat k`} className={undefined} />.
+            <br />Oh, and a coefficient is just the number before the variable (or vector in this case), such as the 3, 4 and 5 in example 1.
           </p>
       </section>
     </div>
