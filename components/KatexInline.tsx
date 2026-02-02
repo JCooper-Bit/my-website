@@ -10,7 +10,7 @@ interface KatexProps {
 
 // Inline component
 // @ts-ignore
-export default function KatexInline({ text, className }) {
+export default function KatexInline({ text, className }: KatexProps) {
   const html = katex.renderToString(text, { throwOnError: false });
   return (
     <span
