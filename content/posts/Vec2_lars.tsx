@@ -1,6 +1,6 @@
 import Dropdown from "@/components/Dropdown";
 import KatexInline from "@/components/KatexInline";
-import KatexSpan from "@/components/KatexSpan";`
+import KatexSpan from "@/components/KatexSpan";
 import VectorDiagram2D from "@/components/VectorDiagram2D";
 import Image from "next/image";
 import Link from "next/link";
